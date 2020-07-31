@@ -65,6 +65,6 @@
 		font-size: 26px;
 		color: #cbcfd4;
 		line-height: 60px;
-		margin-left: 60px;
+		margin-left: 24px;
 	}
 </style>
