@@ -1,88 +1,120 @@
 <template>
 	<div>
-		<t-h @change="selectFn"></t-h >
+		<t-h @change="selectFn" title="中油黑龙江农垦石油有限公司进、销、存月报表" title_s="时间段:2020年5月29日17时-2020年5月31日17时"></t-h >
 		<div class="t-b">
-			<el-table ref=eTable :data="tableData" style="width: 100%" height="780" class="m-t" :row-class-name="tableRowClassName">
+			<el-table ref=eTable :data="tableData" style="width: 100%" :height="eTableHeight" class="m-t" :row-class-name="tableRowClassName">
 				<el-table-column label-class-name="d1-h" class-name="d1-c" fixed prop="column" label="" width="100">
 				</el-table-column>
 				<el-table-column label-class-name="d1-h" class-name=" d1-c" fixed align=center prop="date" label="汽柴油合计" width=270>
-					<el-table-column label-class-name="d1-h d-r" class-name="d1-c d-r" label="本期销售" align=center>
-						<el-table-column label-class-name="d1-h d-r" class-name="d1-c d-r" prop="d1"  header-align=center align=right label="合计" width=90>
+					<el-table-column label-class-name="d1-h " class-name="d1-c " label="本期销售" align=center>
+						<el-table-column label-class-name="d1-h " class-name="d1-c " prop="d1"  header-align=center align=right label="合计" width=90>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h d-r" class-name="d1-c" prop="d2" header-align=center align=right label="枪销" width=90>
+						<el-table-column label-class-name="d1-h " class-name="d1-c" prop="d2" header-align=center align=right label="枪销" width=90>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h d-r" class-name="d1-c" prop="d3" header-align=center align=right label="批发" width=90>
+						<el-table-column label-class-name="d1-h " class-name="d1-c" prop="d3" header-align=center align=right label="批发" width=90>
 						</el-table-column>
 					</el-table-column>
 				</el-table-column>
 				<el-table-column  label-class-name="d1-h" class-name="d1-c" prop="date" label="汽油合计" header-align=center>
 					<el-table-column label-class-name="d1-h" class-name="d1-c" label="前期库存" width=60 header-align=center></el-table-column>
 					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期进货" width=60 header-align=center></el-table-column>
-					<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" label="本期销售"  width=180 header-align=center>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" prop="d1"  label="合计" header-align=center align=right width=90>
+					<el-table-column label-class-name="d1-h  " class-name="d1-c" label="本期销售"  width=180 header-align=center>
+						<el-table-column label-class-name="d1-h  " class-name="d1-c  " prop="d1"  label="合计" header-align=center align=right width=90>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d2" label="枪销" header-align=center align=right width=90>
+						<el-table-column label-class-name="d1-h  " class-name="d1-c" prop="d2" label="枪销" header-align=center align=right width=90>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d3" label="批发" header-align=center align=right width=90>
+						<el-table-column label-class-name="d1-h  " class-name="d1-c" prop="d3" label="批发" header-align=center align=right width=90>
 						</el-table-column>
 					</el-table-column>
 					<el-table-column label-class-name="d1-h" class-name="d1-c" prop="d3" label="本期库存" header-align=center align=right width=60></el-table-column>
 				</el-table-column>
 
-				<el-table-column v-if="selectOption==''||selectOption=='92#车用'" label-class-name="d1-h" class-name="d1-c" prop="date" label="92#车用（乙醇）" header-align=center align=right>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="前期库存" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期进货" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期销售"  width=180 header-align=center>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" prop="d1"  label="合计" width=90 header-align=center align=right>
+				<el-table-column v-if="selectOption==''||selectOption=='92#车用'" label-class-name="d1-h c-y" class-name="d1-c" prop="date" label="92#汽油" header-align=center align=right>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" label="期初库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" label="本日进货" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" label="损溢处理" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" label="本期销售"  width=180 header-align=center>
+						<el-table-column label-class-name="d1-h  c-y" class-name="d1-c  c-y" prop="d1"  label="合计" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-y" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-y" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
 						</el-table-column>
 					</el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" prop="d3" label="本期库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" prop="d3" label="期末库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" prop="d3" label="规定密度" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-y" class-name="d1-c" prop="d3" label="92#库存差异" width=60 header-align=center align=right></el-table-column>
 				</el-table-column>
 
-				<el-table-column v-if="selectOption==''||selectOption=='95#车用'" label-class-name="d1-h" class-name="d1-c" prop="date" label="95#车用（乙醇）" header-align=center align=right>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="前期库存" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期进货" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期销售" width=180 header-align=center>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" prop="d1"  label="合计" width=90 header-align=center align=right>
+				<el-table-column v-if="selectOption==''||selectOption=='95#车用'" label-class-name="d1-h c-r" class-name="d1-c" prop="date" label="95#汽油" header-align=center align=right>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" label="期初库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" label="本日进货" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" label="损溢处理" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" label="本期销售"  width=180 header-align=center>
+						<el-table-column label-class-name="d1-h  c-r" class-name="d1-c  c-r" prop="d1"  label="合计" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-r" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-r" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
 						</el-table-column>
 					</el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" prop="d3" label="本期库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" prop="d3" label="期末库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" prop="d3" label="规定密度" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-r" class-name="d1-c" prop="d3" label="95#库存差异" width=60 header-align=center align=right></el-table-column>
 				</el-table-column>
 
-				<el-table-column v-if="selectOption==''||selectOption=='0#车用'" label-class-name="d1-h" class-name="d1-c" prop="date" label="0#车用（国Ⅵ）" header-align=center align=right>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="前期库存" width=60  header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期进货" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" label="本期销售" width=180 header-align=center align=right>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" prop="d1"  label="合计" width=90 header-align=center align=right>
+				<el-table-column v-if="selectOption==''||selectOption=='0#柴油'" label-class-name="d1-h c-g" class-name="d1-c" prop="date" label="0#柴油" header-align=center align=right>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" label="期初库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" label="本日进货" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" label="损溢处理" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" label="本期销售"  width=180 header-align=center>
+						<el-table-column label-class-name="d1-h  c-g" class-name="d1-c  c-g" prop="d1"  label="合计" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-g" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-g" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
 						</el-table-column>
 					</el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" prop="d3" label="本期库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" prop="d3" label="期末库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" prop="d3" label="规定密度" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g" class-name="d1-c" prop="d3" label="0#柴油" width=60 header-align=center align=right></el-table-column>
 				</el-table-column>
 
-				<el-table-column v-if="selectOption==''||selectOption=='-35#车用'" header-align=center align=right label-class-name="d1-h" class-name="d1-c" prop="date" label="-35#车用（Ⅵ）">
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="前期库存" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" label="本期进货" width=60 header-align=center align=right></el-table-column>
-					<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" label="本期销售" width=180 header-align=center align=right>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c  d-r" prop="d1"  label="合计" width=90 header-align=center align=right>
+				<el-table-column v-if="selectOption==''||selectOption=='-35#柴油'" label-class-name="d1-h c-g2" class-name="d1-c" prop="date" label="-35#柴油" header-align=center align=right>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" label="期初库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" label="本日进货" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" label="损溢处理" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" label="本期销售"  width=180 header-align=center>
+						<el-table-column label-class-name="d1-h  c-g2" class-name="d1-c  c-g2" prop="d1"  label="合计" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-g2" class-name="d1-c" prop="d2" label="枪销" width=90 header-align=center align=right>
 						</el-table-column>
-						<el-table-column label-class-name="d1-h  d-r" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
+						<el-table-column label-class-name="d1-h  c-g2" class-name="d1-c" prop="d3" label="批发" width=90 header-align=center align=right>
 						</el-table-column>
 					</el-table-column>
-					<el-table-column label-class-name="d1-h" class-name="d1-c" prop="d3" label="本期库存" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" prop="d3" label="期末库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" prop="d3" label="规定密度" width=60 header-align=center align=right></el-table-column>
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" prop="d3" label="实际库存" width=60 header-align=center align=right></el-table-column>
+
+					<el-table-column label-class-name="d1-h c-g2" class-name="d1-c" prop="d3" label="-35#柴油" width=60 header-align=center align=right></el-table-column>
 				</el-table-column>
 
 			</el-table>
@@ -98,6 +130,7 @@ export default {
 	},
 	data() {
 		return {
+			eTableHeight:'380',
 			selectOption:'',
 			tableData: [{
 				column: '公司合计',
@@ -204,6 +237,9 @@ export default {
 			return ''
 		}
 	},
+	created(){
+			this.eTableHeight = document.body.offsetHeight - 170
+		},
 }
 
 </script>
@@ -231,19 +267,43 @@ export default {
 	background: #ee8734;
 	color: #000;
 }
+
+.c-y,.t-b .el-table thead.is-group th.c-y,.el-table tr.c-y{
+	background: #ffc000;
+	color: #000;
+}
+
+
+.c-r,.t-b .el-table thead.is-group th.c-r,.el-table tr.c-r{
+	background: #ff0000;
+	color: #000;
+}
+
+.c-g,.t-b .el-table thead.is-group th.c-g,.el-table tr.c-g{
+	background: #77fb6d;
+	color: #000;
+}
+
+.c-g2,.t-b .el-table thead.is-group th.c-g2,.el-table tr.c-g2{
+	background: #00b050;
+	color: #000;
+}
+
 .d-g,.el-table thead.is-group th.d-g,.el-table tr.d-g{
 	background: #5af431;
 	color: #000;
 }
 
+
+
 .d-g,.el-table thead.is-group th.d-e,.el-table tr.d-e{
-	background: #d1f5c8;
+	background: #fff;
 	color: #000;
 }
 
 
 .el-table thead.is-group th{
-	background:#324057;
-	color: #f0f0f0;
+	background:#fff;
+	color: #000;
 }
 </style>

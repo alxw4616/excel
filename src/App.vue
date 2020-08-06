@@ -47,17 +47,18 @@ export default {
 	height: 60px;
 }
 .lm{
-	width: 120px;
+	width: 200px;
 	position: absolute;
 	top: 60px;
 	bottom: 0;
+	overflow: auto;
 }
 .view-main{
 	background: #e5e9f2;
 	position: absolute;
 	top: 60px;
 	bottom: 0;
-	left: 120px;
+	left: 200px;
 	right: 0;
 	overflow: auto;
 	padding: 10px;

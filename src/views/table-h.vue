@@ -4,14 +4,14 @@
 */
 <template>
 	<div class="hello">
-		<h1 class="msg">中油黑龙江农垦石油有限公司进、销、存月报表 <em>时间段:2020年5月29日17时-2020年5月31日17时</em></h1>
-		<div class="r">
+		<h1 class="msg">{{title}} <em>{{title_s}}</em></h1>
+		<div class="r" v-if="changeDiv">
 			<div class="block">
 				<el-date-picker v-model="value1" type="daterange" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期">
 				</el-date-picker>
 			</div>
 			<div style="width: 10px;"></div>
-			<el-select @change="sub" v-model="value" placeholder="请选择">
+			<el-select  @change="sub" v-model="value" placeholder="请选择">
 				<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
 				</el-option>
 			</el-select>
@@ -24,6 +24,27 @@
 export default {
 	// 组件
 	components: {},
+	props: {
+		title: {
+			type: String,
+			// 对象或数组默认值必须从一个工厂函数获取
+			default: function() {
+				return ''
+			}
+		},
+		title_s: {
+			type: String,
+			// 对象或数组默认值必须从一个工厂函数获取
+			default: function() {
+				return ''
+			}
+		},
+		changeDiv:{
+			type: Boolean,
+			// 对象或数组默认值必须从一个工厂函数获取
+			default: true
+		}
+	},
 	data() {
 		return {
 			options: [{
@@ -43,30 +64,14 @@ export default {
 				label: '-35#车用（Ⅵ）'
         }],
 			value: '',
-			value1:''
+			value1: ''
 		}
 	},
 	// 计算属性
-	computed: {
-		total: {
-			get() {},
-			set(val) {}
-		}
-	},
+	computed: {},
 	// 侦听属性
 	watch: {},
-	filters: {
-		// 显示 带*号的身份证号码
-		showCert(val) {
-			if (!val) {
-				return;
-			}
-			let left = val.slice(0, 6);
-			let right = val.slice(-4);
-			console.log(left, right);
-			return left + '*'.repeat(6) + right;
-		},
-	},
+	filters: {},
 	methods: {
 		sub(v) {
 			this.$emit('change', v)
@@ -110,7 +115,8 @@ em {
 	align-items: center;
 	height: 60px;
 }
-.r{
+
+.r {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

@@ -39,6 +39,9 @@
 				return left + '*'.repeat(6) + right;
 			},
 		},
+		created(){
+			console.log('123');
+		},
 		methods: {},
 		mounted() {}
 		// beforeDestroy(){}

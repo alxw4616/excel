@@ -4,7 +4,7 @@
 */
 <template>
 	<div class="m">
-		<div class="logo">LOGO</div>
+		<div class="logo"><img src="@/assets/img/logo.png" style="height: 60px" alt=""></div>
 	</div>
 </template>
 <script>

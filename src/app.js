@@ -2,6 +2,9 @@ import Vue from 'vue';
 import 'reset-css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+// import '@/assets/css/stylesheet.css';
+import '@/assets/css/stylesheet-2.css';
+
 Vue.use(ElementUI);
 import router from '@/config/router.js';
 import App from './App.vue';
